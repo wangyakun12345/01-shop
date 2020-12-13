@@ -18,6 +18,10 @@ Vue.use(ElementUI);
 
 import store from './store/index'
 
+
+// 图片添加的路径
+Vue.prototype.$img = 'http://localhost:3000'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

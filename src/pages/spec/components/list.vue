@@ -8,15 +8,16 @@
       default-expand-all
       :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
     >
-      <el-table-column prop="id" label="分类编号" sortable width="180">
+      <el-table-column prop="id" label="规格编号" sortable width="180">
       </el-table-column>
-      <el-table-column prop="catename" label="分类名称" sortable width="180">
+      <el-table-column prop="specsname" label="规格名称" sortable width="180">
       </el-table-column>
-      <el-table-column  label="图片" sortable width="180">
+      <el-table-column  label="规格属性" sortable width="180">
         <template slot-scope="scope">
-          <img :src="$img+scope.row.img" alt="">
+          <el-tag v-for='item in scope.row.attrs' :key="item">{{item}}</el-tag>
         </template>
       </el-table-column>
+     
     
       <el-table-column prop="status" label="状态">
        
@@ -39,11 +40,11 @@
 </template>
 <script>
 import {mapActions,mapGetters} from 'vuex'
-import { reqRoleDel,reqcateDel} from '../../../util/request'
+import { reqcateDel , reqspecsDel} from '../../../util/request'
 export default {
     computed:{
      ...mapGetters({
-         list:'cate/list'
+         list:'specs/list'
      })
     },
 components:{
@@ -58,18 +59,18 @@ methods:{
 
     },
     del(id){
-         reqcateDel({id:id}).then(res=>{
+         reqspecsDel({id:id}).then(res=>{
           alert("删除成功")
-           this.requestcateList();
+           this.requestspecsList();
          })
 
     },
     ...mapActions({
-         requestcateList:'cate/requestcateList'
+        requestspecsList:'specs/requestspecsList'
     })
 },
 mounted(){
-    this. requestcateList()
+    this. requestspecsList()
 }
 }
 </script>

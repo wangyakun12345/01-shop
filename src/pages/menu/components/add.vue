@@ -47,7 +47,7 @@
 
      <el-form-item label="菜单地址" :label-width="width" v-else>
       <el-select v-model="form.url" >
-        <el-option v-for='item in indexRouter' :key="item.path" :label="'/'+item.path" :value="item.name"></el-option>
+        <el-option v-for='item in indexRouter' :key="item.path" :label="item.name" :value="'/'+item.path"></el-option>
        
       </el-select>
     </el-form-item>

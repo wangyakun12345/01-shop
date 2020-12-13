@@ -17,7 +17,7 @@ data () {
  return {
      info:{
          isShow:false,
-         title:'菜单添加',
+         title:'管理员 添加',
          isAdd:true,
 
      }
@@ -26,13 +26,13 @@ data () {
 methods:{
     willAdd(){
         this.info.isShow = !this.info.isShow
-        this.info.title='角色添加'
+        this.info.title='管理员添加'
         this.info.isAdd=true
           this.$refs.one.empty()
     },
     edit(id){
          this.info.isShow=true
-          this.info.title='角色修改'
+          this.info.title='管理员修改'
         this.info.isAdd=false
          this.$refs.one.look(id)
          

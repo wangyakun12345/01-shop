@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import store from '../store/index'
+
+
 
 const login =()=>import('../pages/login/login')
 const index =()=>import('../pages/index/index')
@@ -27,7 +30,14 @@ Vue.use(Router)
   {
     path:'role',
     component:role,
-    name:'角色管理'
+    name:'角色管理',
+    beforeEnter:(to,from,next)=>{
+        if(from.path=='/index/home'){
+             next()
+        }else{
+           next('/login')
+        }
+    }
   },
   {
     path:'manger',
@@ -70,7 +80,7 @@ Vue.use(Router)
 
 
 
-export default new Router({
+ const router =  new Router({
   routes: [
     {
       path:'/login',
@@ -82,7 +92,14 @@ export default new Router({
       children:[
       {
         path:'home',
-        component:home
+        component:home,
+        beforeEnter:(to,from,next)=>{
+            if(from.path=='/login'&&store.state.user.list){
+              next()
+            }else{
+              next('/login')
+            }
+        }
       },
       {
         path:'/',
@@ -90,6 +107,32 @@ export default new Router({
       },
       ...indexRouter
       ]
+    },
+    // {
+    //   path:'/',
+    //   component:login
+    // },
+    {
+      path:'*',
+      redirect:login
     }
+   
   ]
 })
+
+router.beforeEach((to,from,next)=>{
+    if(to.path=='/login'){
+      next()
+    }
+
+
+    if(store.state.user.list.menus){
+      next()
+    }else{
+      // this.$router.push('/login')
+      // next('/login')
+    }
+})
+
+
+export  default  router

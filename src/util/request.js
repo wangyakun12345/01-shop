@@ -123,10 +123,11 @@ export const requserAdd=(data)=>{
 }
 
 // 管理员列表
-export const requserList=()=>{
+export const requserList=(params)=>{
     return axios({
         url:baseUrl+'/api/userList',
         method:'get', 
+        params:params
        
     })
 }
@@ -142,7 +143,7 @@ export const requserListOne=(id)=>{
 }
 
 // 管理员修改
-export const requsserEdit=(id)=>{
+export const requserEdit=(id)=>{
     return axios({
         url:baseUrl+'/api/useredit',
         method:'post', 
@@ -160,6 +161,219 @@ export const requserDel=(id)=>{
        
     })
 }
+
+// 管理员总数
+export const requserCount=()=>{
+    return axios({
+        url:baseUrl+'/api/usercount',
+        method:'get', 
+    
+       
+    })
+}
+
+// 管理员登录
+export const requserLogin=(data)=>{
+    return axios({
+        url:baseUrl+'/api/userlogin',
+        method:'post',
+        data:data 
+    
+       
+    })
+}
+
+
+
+
+///////////////////////商品分类////////////////////
+
+// 商品分类管理
+
+export const reqcateAdd=(data)=>{
+
+    var form = new FormData()
+    for(var i in data){
+        form.append(i,data[i])
+    }
+    return axios({
+        url:baseUrl+'/api/cateadd',
+        method:'post', 
+        data:form
+    })
+}
+
+// 商品分类列表
+export const reqcateList=(params)=>{
+    return axios({
+        url:baseUrl+'/api/cateList',
+        method:'get', 
+        params:params
+       
+    })
+}
+
+// 商品分类一条数据
+export const reqcateListOne=(id)=>{
+    return axios({
+        url:baseUrl+'/api/cateinfo',
+        method:'get', 
+        params:id
+       
+    })
+}
+
+// 商品分类修改
+export const reqcateEdit=(data)=>{
+    var form = new FormData()
+    for(var i in data){
+        form.append(i,data[i])
+    }
+    return axios({
+        url:baseUrl+'/api/cateedit',
+        method:'post', 
+        data:form 
+       
+    })
+}
+
+// 商品分类删除
+export const reqcateDel=(id)=>{
+    return axios({
+        url:baseUrl+'/api/catedelete',
+        method:'post', 
+        data:id
+       
+    })
+}
+
+
+
+
+
+
+///////////////////////商品规格////////////////////
+
+// 商品规格管理
+
+export const reqspecsAdd=(data)=>{
+
+    
+    return axios({
+        url:baseUrl+'/api/specsadd',
+        method:'post', 
+        data:data
+    })
+}
+
+// 商品规格列表
+export const reqspecsList=(params)=>{
+    return axios({
+        url:baseUrl+'/api/specsList',
+        method:'get', 
+        params:params
+       
+    })
+}
+
+// 商品规格一条数据
+export const reqspecsListOne=(id)=>{
+    return axios({
+        url:baseUrl+'/api/specsinfo',
+        method:'get', 
+        params:id
+       
+    })
+}
+
+// 商品规格修改
+export const reqspecsEdit=(data)=>{
+   
+    return axios({
+        url:baseUrl+'/api/specsedit',
+        method:'post', 
+        data:data 
+       
+    })
+}
+
+// 商品规格删除
+export const reqspecsDel=(id)=>{
+    return axios({
+        url:baseUrl+'/api/specsdelete',
+        method:'post', 
+        data:id
+       
+    })
+}
+
+
+
+///////////////////////商品管理////////////////////
+
+// 商品管理
+
+export const reqgoodsAdd=(data)=>{
+
+    var form = new FormData()
+    for(var i in data){
+        form.append(i,data[i])
+    }
+    return axios({
+        url:baseUrl+'/api/goodsadd',
+        method:'post', 
+        data:form
+    })
+}
+
+// 商品列表
+export const reqgoodsList=(params)=>{
+    return axios({
+        url:baseUrl+'/api/goodsList',
+        method:'get', 
+        params:params
+       
+    })
+}
+
+// 商品一条数据
+export const reqgoodsListOne=(id)=>{
+    return axios({
+        url:baseUrl+'/api/goodsinfo',
+        method:'get', 
+        params:id
+       
+    })
+}
+
+// 商品修改
+export const reqgoodsEdit=(data)=>{
+    var form = new FormData()
+    for(var i in data){
+        form.append(i,data[i])
+    }
+    return axios({
+        url:baseUrl+'/api/goodsedit',
+        method:'post', 
+        data:form 
+       
+    })
+}
+
+// 商品删除
+export const reqgoodsDel=(id)=>{
+    return axios({
+        url:baseUrl+'/api/goodsdelete',
+        method:'post', 
+        data:id
+       
+    })
+}
+
+
+
+
+
 
 
 
